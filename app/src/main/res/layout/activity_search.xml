@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ln_name_new"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="@dimen/size52dp"
+            android:id="@+id/ib_back"
+            android:layout_height="@dimen/size52dp"
+            android:layout_marginLeft="@dimen/size10dp"
+            android:layout_marginTop="@dimen/size10dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_back"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/newmessages"
+            android:textSize="@dimen/size26sp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/size10dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_below="@id/ln_name_new"
+       android:id="@+id/ln_search"
+       android:layout_height="wrap_content">
+
+       <EditText
+           android:layout_width="match_parent"
+           android:id="@+id/ed_search"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="@dimen/size10dp"
+          android:layout_marginLeft="@dimen/size10dp"
+           android:drawableRight="@drawable/ic_search"
+           android:drawablePadding="@dimen/size10dp"
+           android:hint="@string/namecontact"
+           android:background="@drawable/bo_vien"
+           android:padding="@dimen/size10dp" />
+   </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contact"
+        android:layout_below="@+id/ln_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_alignParentBottom="true"
+       android:background="@drawable/bo_vien"
+       android:layout_margin="@dimen/size10dp"
+       android:orientation="horizontal"
+       android:weightSum="10"
+       android:gravity="center_vertical"
+       android:layout_height="wrap_content">
+
+       <EditText
+           android:layout_width="wrap_content"
+           android:id="@+id/ed_message"
+           android:hint="@string/sendmessage"
+           android:layout_weight="9.5"
+           android:layout_height="wrap_content" />
+
+       <ImageButton
+           android:layout_width="@dimen/size52dp"
+           android:layout_weight="0.5"
+           android:id="@+id/ib_send_message"
+           android:background="@color/white"
+           android:src="@drawable/ic_send_message"
+           android:layout_height="@dimen/size52dp"/>
+   </LinearLayout>
+</RelativeLayout>
