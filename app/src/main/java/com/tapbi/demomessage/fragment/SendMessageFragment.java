@@ -1,4 +1,4 @@
-package com.tapbi.demomessage.Fragment;
+package com.tapbi.demomessage.fragment;
 
 import androidx.fragment.app.Fragment;
 

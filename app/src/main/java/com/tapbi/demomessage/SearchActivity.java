@@ -3,7 +3,6 @@ package com.tapbi.demomessage;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,8 +21,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tapbi.demomessage.Addapter.ContactAdapter;
-import com.tapbi.demomessage.DTO.ItemContact;
+import com.tapbi.demomessage.addapter.ContactAdapter;
+import com.tapbi.demomessage.dto.ItemContact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,29 +34,19 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private EditText ed_search, ed_send;
     private ImageButton ib_back, ib_send_message;
     final int REQUEST_CODE_ASK_PERMISSIONS_CONTACT = 123;
-    final int REQUEST_CODE_ASK_PERMISSIONS_SENDSMS = 123;
+    final int REQUEST_CODE_ASK_PERMISSIONS_SENDSMS = 143;
     private String number ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_search);
-         checkPermission();
          initView();
 
     }
 
-    public void checkPermission(){
-        if( getApplicationContext().checkSelfPermission( Manifest.permission.READ_CONTACTS ) != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS_CONTACT);
-        }
-
-        if( getApplicationContext().checkSelfPermission( Manifest.permission.SEND_SMS ) != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, REQUEST_CODE_ASK_PERMISSIONS_SENDSMS);
-        }
-    }
-
     private void initView() {
+        checkPermission();
         rvContact = findViewById(R.id.rv_contact);
         rvContact.setHasFixedSize(true);
         getListContact();
@@ -84,6 +73,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 filter(editable.toString());
             }
         });
+    }
+
+    public void checkPermission(){
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS_CONTACT);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, REQUEST_CODE_ASK_PERMISSIONS_SENDSMS);
     }
 
     private void filter(String name) {
@@ -116,6 +110,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.ib_send_message:
                 doSendMessages();
+                Intent intentSend = new Intent(this,SendMessageActivity.class);
+                startActivity(intentSend);
                 break;
             default:
                 break;

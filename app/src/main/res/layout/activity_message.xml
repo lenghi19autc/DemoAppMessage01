@@ -30,6 +30,14 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_message"
+        android:layout_below="@id/ln_name_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
@@ -44,7 +52,10 @@
             android:layout_width="wrap_content"
             android:id="@+id/ed_message"
             android:hint="@string/sendmessage"
+            android:background="@color/white"
             android:layout_weight="9.5"
+            android:paddingLeft="@dimen/size20dp"
+            android:paddingRight="@dimen/size20dp"
             android:layout_height="wrap_content" />
 
         <ImageButton

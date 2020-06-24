@@ -1,4 +1,4 @@
-package com.tapbi.demomessage.Addapter;
+package com.tapbi.demomessage.addapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tapbi.demomessage.DTO.ItemMessage;
+import com.tapbi.demomessage.dto.ItemMessage;
 import com.tapbi.demomessage.R;
 
 import java.util.List;

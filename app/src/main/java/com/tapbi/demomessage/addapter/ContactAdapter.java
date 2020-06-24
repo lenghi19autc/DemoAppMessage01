@@ -1,5 +1,6 @@
-package com.tapbi.demomessage.Addapter;
+package com.tapbi.demomessage.addapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tapbi.demomessage.DTO.ItemContact;
+import com.tapbi.demomessage.dto.ItemContact;
 import com.tapbi.demomessage.R;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderContact holder, int position) {
+        Log.e("BINDDATA", "onBindViewHolder: " + position );
             ItemContact itemContact = contactList.get(position);
             holder.tv_name_contact.setText(itemContact.getName());
             holder.tv_number.setText(itemContact.getNumber());

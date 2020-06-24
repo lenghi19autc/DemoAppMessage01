@@ -1,16 +1,15 @@
-package com.tapbi.demomessage.DTO;
+package com.tapbi.demomessage.dto;
 
-public class ItemMessage {
+public class ItemContact {
     private String name;
-    private String content;
     private String number;
 
-    public ItemMessage() {
+
+    public ItemContact() {
     }
 
-    public ItemMessage(String name, String content, String number) {
+    public ItemContact(String name, String number) {
         this.name = name;
-        this.content = content;
         this.number = number;
     }
 
@@ -20,14 +19,6 @@ public class ItemMessage {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getNumber() {
