@@ -1,6 +1,8 @@
 package com.tapbi.demomessage.dto;
 
-public class ItemContact {
+import java.io.Serializable;
+
+public class ItemContact  implements Serializable {
     private String name;
     private String number;
 

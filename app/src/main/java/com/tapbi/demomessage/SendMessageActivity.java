@@ -45,8 +45,9 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_message);
          checkPermission();
         initView();
-
+        
     }
+
 
     public void checkPermission(){
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, REQUEST_CODE_ASK_PERMISSIONS_SENDSMS);
@@ -66,7 +67,7 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
 
         name = intent.getStringExtra("name");
         messageList = getSMS();
-      //  id = messageList.get(position).getId();
+
         ib_back_message = findViewById(R.id.ib_back_message);
         ib_back_message.setOnClickListener(this);
 
@@ -88,10 +89,6 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
            tv_name_contact.setText(name);
            address = name;
        }
-       
-         rv_list_message = findViewById(R.id.rv_message);
-         rv_list_message.setHasFixedSize(true);
-
          loadAllListMessage();
 //        SendMessageAsyncTask sendMessageAsyncTask = new SendMessageAsyncTask();
 //        sendMessageAsyncTask.execute(id);
@@ -99,6 +96,8 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
 
     }
     private void loadAllListMessage(){
+        rv_list_message = findViewById(R.id.rv_message);
+        rv_list_message.setHasFixedSize(true);
         messageList = getListMessage(address);
         listMessageAdapter = new ListMessageAdapter(messageList);
         rv_list_message.setAdapter(listMessageAdapter);
@@ -116,6 +115,7 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
         itemMessage1.setId(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
         itemMessage1.setName(cursor.getString(cursor.getColumnIndexOrThrow("address")));
         itemMessage1.setContent(cursor.getString(cursor.getColumnIndexOrThrow("body")));
+        itemMessage1.setNumber(cursor.getString(cursor.getColumnIndexOrThrow("address")));
         list.add(itemMessage1);
         cursor.moveToNext();
         while (!cursor.isAfterLast()) {
@@ -187,7 +187,8 @@ public class SendMessageActivity extends AppCompatActivity implements View.OnCli
             case R.id.ib_send_message:
                 if (sendSMS){
                     doSendMessages();
-                    loadAllListMessage();
+                   initView();
+                    ed_send_message.setText(null);
                 }
                 
                 break;

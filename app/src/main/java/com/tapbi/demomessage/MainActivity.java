@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tapbi.demomessage.addapter.MessageAdapter;
+import com.tapbi.demomessage.dto.ItemContact;
 import com.tapbi.demomessage.dto.ItemMessage;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private MessageAdapter messageAdapter;
     private List<ItemMessage> messageList;
+    private List<ItemContact> contactList;
     private Button btn_add_message;
     final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     final int REQUEST_CODE_ASK_PERMISSIONS_CONTACT = 123;
@@ -35,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkPermission();
-       // displaySmsLog();
+
     }
+
    private void checkPermission(){
        ActivityCompat.requestPermissions(
                MainActivity.this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_ASK_PERMISSIONS);
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           itemMessage.setId(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
           itemMessage.setName(cursor.getString(cursor.getColumnIndexOrThrow("address")));
           itemMessage.setContent(cursor.getString(cursor.getColumnIndexOrThrow("body")));
-          
+
           if (check(list, itemMessage.getName())){
               list.add(itemMessage);
           }
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return list;
     }
+
 
     public boolean check(List<ItemMessage> list, String address){
         for (int i =0 ; i< list.size(); i++){
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
+
 
     @Override
     public void onClick(View view) {

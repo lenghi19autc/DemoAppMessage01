@@ -28,7 +28,7 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnCallBack {
     private RecyclerView rvContact;
-    private List<ItemContact> contactList;
+    private List<ItemContact> contactList, contactListFull;
     private ContactAdapter contactAdapter;
     private EditText ed_search, ed_send;
     private ImageButton ib_back, ib_send_message;
@@ -43,6 +43,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_search);
         checkPermission();
+        contactListFull = getListContacts();
     }
 
     public void checkPermission(){
@@ -67,6 +68,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         rvContact.setHasFixedSize(true);
         
         contactList = getListContacts();
+
         contactAdapter = new ContactAdapter(contactList, this);
         rvContact.setAdapter(contactAdapter);
         rvContact.setLayoutManager(new LinearLayoutManager(this));
@@ -142,7 +144,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
         //calling a method of the adapter class and passing the filtered list
-        contactAdapter.filterList(filterdNames);
+        if (name.length()==0){
+            contactAdapter.filterList((ArrayList<ItemContact>) contactListFull);
+        } else {
+            contactAdapter.filterList(filterdNames);
+        }
     }
 
     @Override

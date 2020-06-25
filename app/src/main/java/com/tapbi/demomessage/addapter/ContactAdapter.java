@@ -19,8 +19,6 @@ import java.util.List;
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolderContact> {
     private List<ItemContact> contactList;
     private OnCallBack mListener;
-    private int VIEW_TYPE_LOADING = 1;
-    private int VIEW_TYPE_ITEM = 0;
 
     public ContactAdapter(List<ItemContact> contactList, OnCallBack listener) {
         this.contactList = contactList;
@@ -28,7 +26,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     }
 
     public void filterList(ArrayList<ItemContact> filterdNames) {
-       this.contactList = filterdNames;
+        this.contactList.clear();
+       this.contactList.addAll(filterdNames);
         notifyDataSetChanged();
     }
 
