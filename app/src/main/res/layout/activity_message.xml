@@ -34,7 +34,8 @@
         android:id="@+id/rv_message"
         android:layout_below="@id/ln_name_new"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_marginBottom="@dimen/size52dp"
+        android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -24,7 +24,7 @@ public class ListMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-       if ( messageList.get(position).getCreator().equals("com.vinsmart.messaging"))  {
+       if ( messageList.get(position).getFolder().equals("inbox")) {
            return OTHERS;
        }
        else {

@@ -56,29 +56,4 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_alignParentBottom="true"
-       android:background="@drawable/bo_vien"
-       android:layout_margin="@dimen/size10dp"
-       android:orientation="horizontal"
-       android:weightSum="10"
-       android:gravity="center_vertical"
-       android:layout_height="wrap_content">
-
-       <EditText
-           android:layout_width="wrap_content"
-           android:id="@+id/ed_message"
-           android:hint="@string/sendmessage"
-           android:layout_weight="9.5"
-           android:layout_height="wrap_content" />
-
-       <ImageButton
-           android:layout_width="@dimen/size52dp"
-           android:layout_weight="0.5"
-           android:id="@+id/ib_send_message"
-           android:background="@color/white"
-           android:src="@drawable/ic_send_message"
-           android:layout_height="@dimen/size52dp"/>
-   </LinearLayout>
 </RelativeLayout>
